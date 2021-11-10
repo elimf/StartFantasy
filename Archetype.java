@@ -6,8 +6,12 @@ public class Archetype {
     protected int initiative;
 
     void takeDamage(int damage_receive){
-        pv -=damage_receive;
-    };
+        pv -= damage_receive;
+    }
+
+    void magicDamage (int magic_damage){
+        damage += magic_damage;
+    }
     
     public String getName() {
         return name;
