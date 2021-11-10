@@ -71,6 +71,7 @@ public class menu {
       case "p":
       System.out.println("The game will start in a few time");
       System.out.println("LOADING...");
+      game.setGames();
         
         break;
       case "q":
