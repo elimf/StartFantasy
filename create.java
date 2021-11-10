@@ -2,7 +2,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class create {
+public class create extends Archetype{
     public static void display() {
 
         Scanner scanner = new Scanner(System.in);
