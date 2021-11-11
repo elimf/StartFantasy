@@ -107,7 +107,7 @@ public class defaultPlayer extends Archetype {
     }
     public String toString() {
        
-        return defDefault+":"  + "name : "+ nameDefault + " / Damage : " + damageDefault+ " /70;  pv : " + pvDefault+ " /200; initiative : " + initDefault+ "/10.";
+        return defDefault+":"  + "name : "+ nameDefault + " / Damage : " + damageDefault+ " /100;  pv : " + pvDefault+ " /500; initiative : " + initDefault+ "/10.";
     }
 }
 
