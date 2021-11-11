@@ -6,7 +6,7 @@ public class Wizard extends Archetype{
         this.initiative = initiative;
     }
 
-    @Override
+    
     public String toString() {
         return "Wizard 9ATT 15PV 74INIT";
     }
