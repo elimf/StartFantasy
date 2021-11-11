@@ -1,8 +1,8 @@
 public class Archetype {
-    protected String name;
-    protected int damage;
-    protected int pv;
-    protected int initiative;
+    protected static String name;
+    protected static int damage;
+    protected static int pv;
+    protected static int initiative;
 
     void takeDamage(int damage_receive){
         pv -=damage_receive;
