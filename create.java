@@ -39,7 +39,7 @@ public class create extends Archetype{
 
     public static String setPlayerToGame() {
         int man = 78 ;
-       String type="" ;
+       String type=" " ;
     
         try {
         Scanner choosePerso = new Scanner(System.in);
@@ -97,6 +97,14 @@ public class create extends Archetype{
        int playerPv2 =selectPv(player2);
        int playerInit1 =selectInitiative(player1);
        int playerInit2 =selectInitiative(player2);
+       int Dodge1=selectDamage(player1);
+       int Dodge2 =selectDamage(player2);
+       int Shield1 =selectShield(player1);
+       int Shield2= selectShield(player2);
+       boolean DA1 =selectDamageAmplified(player1);
+       boolean DA2 =selectDamageAmplified(player2);
+       boolean Dc1 =selectDamageCritikal(player1);
+       boolean Dc2 =selectDamageCritikal(player2);
        int it=0;
        
        if (playerInit1>playerInit2) {  
@@ -147,10 +155,50 @@ public class create extends Archetype{
         
         return nb+=1;
     }
+    public static boolean selectDamageCritikal(String toSepare ) {
+        String regex =" ";
+       String mot[]=toSepare.split(regex);
+       for (int i = 0; i < 7; i++) {
+           
+       }
+   
+     boolean result = Boolean.parseBoolean(mot[7]) ;
+       return result;
+    }
+    public static boolean selectDamageAmplified(String toSepare ) {
+        String regex =" ";
+       String mot[]=toSepare.split(regex);
+       for (int i = 0; i < 7; i++) {
+           
+       }
+   
+     boolean result = Boolean.parseBoolean(mot[6]) ;
+       return result;
+    }
+    public static int selectShield(String toSepare ) {
+        String regex =" ";
+       String mot[]=toSepare.split(regex);
+       for (int i = 0; i < 7; i++) {
+           
+       }
+   
+     int result = Integer.parseInt(mot[5]);
+       return result;
+    }
+    public static int selectDodge(String toSepare ) {
+        String regex =" ";
+       String mot[]=toSepare.split(regex);
+       for (int i = 0; i < 7; i++) {
+           
+       }
+   
+     int result = Integer.parseInt(mot[4]);
+       return result;
+    }
     public static int selectInitiative(String toSepare ) {
         String regex =" ";
        String mot[]=toSepare.split(regex);
-       for (int i = 0; i < 4; i++) {
+       for (int i = 0; i < 7; i++) {
            
        }
    
@@ -160,7 +208,7 @@ public class create extends Archetype{
     public static int selectPv(String toSepare) {
        String regex =" ";
        String mot[]=toSepare.split(regex);
-       for (int i = 0; i < 4; i++) {
+       for (int i = 0; i < 7; i++) {
             
        }
    
@@ -171,7 +219,7 @@ public class create extends Archetype{
     public static int selectDamage(String toSepare) {
         String regex =" ";
        String mot[]=toSepare.split(regex);
-       for (int i = 0; i < 4; i++) {
+       for (int i = 0; i < 7; i++) {
             
        }
    
@@ -182,7 +230,7 @@ public class create extends Archetype{
     public static String selectName(String toSepare) {
         String regex =" ";
        String mot[]=toSepare.split(regex);
-       for (int i = 0; i < 4; i++) {
+       for (int i = 0; i < 7; i++) {
             
        }
        String result =mot[0];

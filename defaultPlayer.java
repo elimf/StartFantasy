@@ -22,7 +22,7 @@ public class defaultPlayer extends Archetype {
     int pvDefault = addPv();
     int initDefault = addIniatiative();
     int dodgeDefault=addDodge();
-    int shieldDefault = addShield();
+    boolean shieldDefault = addShield();
     boolean damageAmplifiedDefault =addDamageAmplified();
     boolean damageCritikalDefault =addDamageCritikal();
     String gen;
