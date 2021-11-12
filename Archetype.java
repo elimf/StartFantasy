@@ -1,5 +1,5 @@
 import java.util.Scanner;
-import java.util.Random;
+
 public class Archetype {
     protected static String name;
     protected static int damage;
@@ -223,7 +223,7 @@ public class Archetype {
         } catch (Exception e) {
             System.err.println("error input");
             System.err.println("Entry true or false");
-            DamageCri=addShield();
+            DamageCri=addDamageCritikal();
         }
     return DamageCri; 
 }

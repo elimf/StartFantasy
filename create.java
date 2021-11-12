@@ -3,8 +3,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class create extends Archetype{
-     static ArrayList<defaultPlayer> saveMe = new ArrayList<defaultPlayer>();
-     static int indexSave = 0;
+     public static ArrayList<Archetype> saveMe = new ArrayList<Archetype>();
+     public static int indexSave = 0;
     private static String def;
     
 
@@ -21,8 +21,8 @@ public class create extends Archetype{
         System.out.println("The Game starts...");
          fight(perso1,perso2);
     }
-    public static ArrayList<defaultPlayer> saveDefaultPerso(int i, defaultPlayer persoToSave ) {
-        ArrayList<defaultPlayer> stock = new ArrayList<defaultPlayer>();
+    public static ArrayList<Archetype> saveDefaultPerso(int i, Archetype persoToSave ) {
+        ArrayList<Archetype> stock = new ArrayList<Archetype>();
         stock.add(i,persoToSave);
         return stock;   
     }
@@ -30,7 +30,7 @@ public class create extends Archetype{
         i +=1;
         return i;
     }
-    public static ArrayList<defaultPlayer> displayStockSave( ArrayList<defaultPlayer> showMe ) {
+    public static ArrayList<Archetype> displayStockSave( ArrayList<Archetype> showMe ) {
         for (int i = 0; i < showMe.size(); i++) {
             System.out.println(i+":"+showMe.get(i));
         }
@@ -66,17 +66,24 @@ public class create extends Archetype{
     case 2 :
         Warrior war = new Warrior(Warrior.name, Warrior.damage, Warrior.pv, Warrior.initiative, Warrior.dodge, Warrior.shield, Warrior.damageAmplified, Warrior.damageCritikal);
         System.out.println(war);
+        saveMe=saveDefaultPerso(indexSave,war);
+        indexSave=addMore(indexSave);
        type =war.gen;
         
         break;
     case 3 :
         Wizard wiz = new Wizard(Wizard.name,Wizard.damage, Wizard.pv, Wizard.initiative, Wizard.dodge, Wizard.shield, Wizard.damageAmplified, Wizard.damageCritikal);
         System.out.println(wiz);
+        saveMe=saveDefaultPerso(indexSave,wiz);
+        indexSave=addMore(indexSave);
         type =wiz.gen;
         break;
     case 4 :
         Thief th = new Thief(Thief.name, Thief.damage, Thief.pv, Thief.initiative, Thief.dodge, Thief.shield, Thief.damageAmplified, Thief.damageCritikal);
+        saveMe=saveDefaultPerso(indexSave,th);
+        indexSave=addMore(indexSave);
         type=th.gen;
+
         break;
 
     default:

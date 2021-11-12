@@ -62,7 +62,7 @@ public class choose {
     System.err.println("");
     System.out.println("Press 'p' for play at the game.");
     System.out.println("Press 'q' for to quit.");
-    System.out.println("Press 'r' for to display the rules.");
+    System.out.println("Press 'r' for to display different perso .");
     System.out.println("");
     Scanner key = new Scanner(System.in);
     String theChoose =key.nextLine();
@@ -81,7 +81,8 @@ public class choose {
             wantQuit();
         break; 
       case "r":
-        displayRules();
+        create.displayStockSave(create.saveMe);
+        principalMain();
         break;
     
       default:
@@ -90,6 +91,7 @@ public class choose {
         principalMain();
         break;
     }
+
   }
    public static void toFinish() {
            Scanner rt =new Scanner(System.in);
