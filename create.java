@@ -99,8 +99,8 @@ public class create extends Archetype{
        int playerInit2 =selectInitiative(player2);
        int Dodge1=selectDamage(player1);
        int Dodge2 =selectDamage(player2);
-       int Shield1 =selectShield(player1);
-       int Shield2= selectShield(player2);
+       boolean Shield1 =selectShield(player1);
+       boolean Shield2= selectShield(player2);
        boolean DA1 =selectDamageAmplified(player1);
        boolean DA2 =selectDamageAmplified(player2);
        boolean Dc1 =selectDamageCritikal(player1);
@@ -121,7 +121,7 @@ public class create extends Archetype{
             System.out.println(" ");
 
             System.out.println(namePlayer1+" is attacking. ");
-            playerPv2= takeDamage(Damage1,playerPv2);
+            playerPv2= takeDamage(Damage1,playerPv2, Shield2);
             System.out.println(namePlayer2+" your pv:"+playerPv2+"after the phenomenal attack. ");
             System.out.println(" ");
            } while (playerPv2 == 0);
@@ -131,7 +131,7 @@ public class create extends Archetype{
                System.out.println(" ");
            
                System.out.println(namePlayer2+" is attacking. ");
-               playerPv1= takeDamage(Damage2,playerPv1);
+               playerPv1= takeDamage(Damage2,playerPv1,Shield1);
                System.out.println("Your pv: "+playerPv1+"after the phenomenal attack. ");
                
            } while (playerPv1 == 0);    
@@ -175,14 +175,14 @@ public class create extends Archetype{
      boolean result = Boolean.parseBoolean(mot[6]) ;
        return result;
     }
-    public static int selectShield(String toSepare ) {
+    public static boolean selectShield(String toSepare ) {
         String regex =" ";
        String mot[]=toSepare.split(regex);
        for (int i = 0; i < 7; i++) {
            
        }
    
-     int result = Integer.parseInt(mot[5]);
+     boolean result = Boolean.parseBoolean(mot[5]);
        return result;
     }
     public static int selectDodge(String toSepare ) {
