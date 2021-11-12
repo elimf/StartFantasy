@@ -238,7 +238,8 @@ public class Archetype {
             System.err.println("Entry true or false");
             DamageCri=addDamageAmplified();
     }
-    return DamageCri; 
+    
 }
+return DamageCri; 
 } 
 }
