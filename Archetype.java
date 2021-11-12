@@ -5,14 +5,21 @@ public class Archetype {
     protected static int pv;
     protected static int initiative;
     protected static  int dodge;
-    protected static int shield;
+    protected static boolean shield;
     protected static boolean damageCritikal;
     protected static boolean damageAmplified;
 
-    static int takeDamage(int damage_receive,int pv){
-         pv -= damage_receive;
+    static int takeDamage(int damage_receive,int pv, Boolean shield){
+         if (shield) {
+             pv -= (damage_receive-(damage_receive*0.5)); 
+             
+         } else {
+             pv -= damage_receive;
+         }
+        
         return pv;
     };
+    
     
     public String getName() {
         return name;
@@ -44,10 +51,10 @@ public class Archetype {
     public void setDodge (int dodge){
         Archetype.dodge =dodge;
     }
-    public int getShield(){
+    public boolean getShield(){
         return shield;
     }
-    public void setShield(int shield){
+    public void setShield(Boolean shield){
         Archetype.shield=shield;
     }
     public boolean getDamageCritikal(){
@@ -169,30 +176,30 @@ public class Archetype {
                             }
                             return numbers;
                         }
-    public int addShield(){
-    int numbers;
-    try {
-        Scanner cq = new Scanner(System.in);
-        System.out.println("Write a value between 0 and 500 of shield:");
-        numbers = cq.nextInt();
+    public boolean addShield(){
+    boolean DamageCri;
+        try {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Do you have a Shield? Write true or false :");
+         DamageCri = sc.nextBoolean();
         } catch (Exception e) {
-                     System.err.println("error input");
-                     System.err.println("0<Shlied>500");
-                     numbers=addShield();
-                     }
-                     while ((numbers <= 0) || (numbers > 500) ){  
-                         try {
-                             Scanner cq = new Scanner(System.in);
-                             System.out.println("Write a value between 0 and 500 of shield:");
-                             numbers = cq.nextInt();
-                             } catch (Exception e) {
-                                  System.err.println("error input");
-                                  System.err.println("0<Shield>500");
-                                  numbers=addDodge();
-                                }   
-                            }
-                            return numbers;
-                        }
+            System.err.println("error input");
+            System.err.println("Entry true or false");
+            DamageCri=addShield();
+        }
+        while(DamageCri== true || DamageCri == false){
+            try {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Do you have a Shield? Write true or false :");
+         DamageCri = sc.nextBoolean();
+        } catch (Exception e) {
+            System.err.println("error input");
+            System.err.println("Entry true or false");
+            DamageCri=addShield();
+        }
+    }
+    return DamageCri; 
+}
     public  boolean addDamageCritikal() {
         boolean DamageCri;
         try {
@@ -202,7 +209,7 @@ public class Archetype {
         } catch (Exception e) {
             System.err.println("error input");
             System.err.println("Entry true or false");
-            DamageCri=addDamageCritikal();
+            DamageCri=addShield();
         }
         while(DamageCri== true || DamageCri == false){
             try {
@@ -212,7 +219,7 @@ public class Archetype {
         } catch (Exception e) {
             System.err.println("error input");
             System.err.println("Entry true or false");
-            DamageCri=addDamageCritikal();
+            DamageCri=addShield();
         }
     }
     return DamageCri; 
