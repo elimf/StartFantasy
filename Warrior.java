@@ -1,13 +1,19 @@
 public class Warrior extends Archetype{
         public Warrior (String name, int damage, int pv, int initiative){
-        this.name = name;
-        this.damage = damage;
-        this.pv = pv;
-        this.initiative = initiative;
+        Archetype.name = nameWarrior;
+        Archetype.damage = damageWarrior;
+        Archetype.pv = pvWarrior;
+        Archetype.initiative = initiativeWarrior;
+        gen =nameWarrior+" "+ damageWarrior+" "+pvWarrior+" "+initiativeWarrior;
     }
+    String nameWarrior = "Warrior";
+    int damageWarrior = 100;
+    int pvWarrior = 400;
+    int initiativeWarrior = 6;
+    String gen;
+    
 
-    @Override
     public String toString() {
-        return "Warrior 8ATT 15PV 99INIT";
+        return " name : "+ nameWarrior + " | Damage : " + damageWarrior+ " /100 |  pv : " + pvWarrior+ " /500 | initiative : " + initiativeWarrior + "/10.";
     }
 }

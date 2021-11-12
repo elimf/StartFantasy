@@ -1,9 +1,6 @@
 
-
-import java.time.temporal.ValueRange;
-import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.concurrent.ExecutionException;
+
 
 public class defaultPlayer extends Archetype {
 
@@ -13,12 +10,16 @@ public class defaultPlayer extends Archetype {
         Archetype.damage = damageDefault;
         Archetype.pv = pvDefault;
         Archetype.initiative = initDefault;
+        gen = nameDefault+" " +damageDefault+" "+pvDefault+" "+initDefault;
     }
     String defDefault = setDefDefault();
     String nameDefault = setDefaultPlayer();
     int damageDefault = setDamageDefaultPlayer();
     int pvDefault = setPvDefaultPlayer();
     int initDefault = setInitDefaultPlayer();
+    String gen;
+    
+    
     
     public String setDefDefault() {
         System.out.println("Now you will have to gradually fill in the attributes of your character:");
@@ -33,6 +34,7 @@ public class defaultPlayer extends Archetype {
         Scanner sc = new Scanner(System.in);
         System.out.println("Write a name:");
          Default = sc.nextLine();
+         
         
        return Default; 
     }
@@ -40,19 +42,23 @@ public class defaultPlayer extends Archetype {
         int numbers;
         try {
         Scanner cq = new Scanner(System.in);
-        System.out.println("Write a value of Damage:");
+        System.out.println("Write a value between 0 to 100 of Damage:");
         numbers = cq.nextInt();
+        
         } catch (Exception e) {
             System.err.println("error input");
+            System.err.println("0<Damage>100");
             numbers=setDamageDefaultPlayer();
         }
-        while((numbers <= 0) || (numbers >= 100) ){
+        while((numbers <= 0) || (numbers > 100) ){
         try {
         Scanner cq = new Scanner(System.in);
-        System.out.println("Write a value of Damage:");
+        System.out.println("Write a value between 0 to 100 of Damage:");
         numbers = cq.nextInt();
+        
         } catch (Exception e) {
             System.err.println("error input");
+            System.err.println("0<Damage>100");
             numbers=setDamageDefaultPlayer();
         }
         }
@@ -60,54 +66,56 @@ public class defaultPlayer extends Archetype {
     }
     public int setPvDefaultPlayer() {
         int numbers;
-        try {
-        Scanner cq = new Scanner(System.in);
-        System.out.println("Write a value of Pv:");
-        numbers = cq.nextInt();
-           
-       } catch (Exception e) {
-           System.err.println("error input");
-           numbers=setPvDefaultPlayer();
-       }   
-    while ((numbers <= 0) || (numbers > 500) ){
-    try {
-        Scanner cq = new Scanner(System.in);
-        System.out.println("Write a value of Pv:");
-        numbers = cq.nextInt();
-           
-       } catch (Exception e) {
-           System.err.println("error input");
-           numbers=setPvDefaultPlayer();
-       }   
-   }
-        return numbers;
-    }
-    public int setInitDefaultPlayer() {
-        int numbers;
-        try {
-        Scanner cq = new Scanner(System.in);
-        System.out.println("Write a value of initiative:");
-        numbers = cq.nextInt(); 
-       } catch (Exception e) {
-           System.err.println("error input");
-           numbers=setInitDefaultPlayer();
-       }   
-    while ((numbers <= 0) || (numbers > 10) ){  
-    try {
-        Scanner cq = new Scanner(System.in);
-        System.out.println("Write a value of initiative:");
-        numbers = cq.nextInt();
-           
-        } catch (Exception e) {
-           System.err.println("error input");
-           numbers=setInitDefaultPlayer();
-        }   
-    }
-   return numbers;
-    }
+         try {
+              Scanner cq = new Scanner(System.in);
+              System.out.println("Write a value between 0 and 500 of Pv:");
+              numbers = cq.nextInt();
+            } catch (Exception e) {
+                 System.err.println("error input");
+                 System.err.println("0< Pv <=500");
+                 numbers=setPvDefaultPlayer();
+                }
+                while ((numbers <= 0) || (numbers > 500) ){
+                    try {
+                        Scanner cq = new Scanner(System.in);
+                        System.out.println("Write a value between 0 and 500 of Pv:");
+                        numbers = cq.nextInt();
+                    } catch (Exception e) {
+                        System.err.println("error input");
+                        System.err.println("0< pv <=500");
+                        numbers=setPvDefaultPlayer();
+                    }
+                }
+                return numbers;
+            }
+            public int setInitDefaultPlayer() {
+                int numbers;
+                try {
+                    Scanner cq = new Scanner(System.in);
+                    System.out.println("Write a value between 0 and 10 of initiative:");
+                    numbers = cq.nextInt(); 
+                } catch (Exception e) {
+                     System.err.println("error input");
+                     System.err.println("0<Iniative>10");
+                     numbers=setInitDefaultPlayer();
+                     }
+                     while ((numbers <= 0) || (numbers > 10) ){  
+                         try {
+                             Scanner cq = new Scanner(System.in);
+                             System.out.println("Write a value between 0 and 10 of initiative:");
+                             numbers = cq.nextInt();
+                             } catch (Exception e) {
+                                  System.err.println("error input");
+                                  System.err.println("0<Iniative>10");
+                                  numbers=setInitDefaultPlayer();
+                                }   
+                            }
+                            return numbers;
+                        }
     public String toString() {
        
-        return defDefault+":"  + "name : "+ nameDefault + " / Damage : " + damageDefault+ " /100;  pv : " + pvDefault+ " /500; initiative : " + initDefault+ "/10.";
+        
+        return defDefault+"="  + "  name : "+ nameDefault + " | Damage : " + damageDefault+ " /100 |  pv : " + pvDefault+ " /500 | initiative : " + initDefault+ "/10.";
     }
 }
 

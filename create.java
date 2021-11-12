@@ -3,24 +3,44 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class create extends Archetype{
-
+     static ArrayList<defaultPlayer> saveMe = new ArrayList<defaultPlayer>();
+     static int indexSave = 0;
     private static String def;
+    private static String playerDefault;
+
     public static void display() {
         String perso1;
         String perso2;
-        System.out.println("First player it's yourn turn");
+
+        System.out.println("First player it's yourn turn to choose a fighter. ");
         perso1 =setPlayerToGame();
         System.out.println(" ");
-        System.out.println("Second player it's your turn.");
+        System.out.println("Second player it's your turn to choose a fighter. ");
         perso2=setPlayerToGame();
         System.err.println(" ");
-        System.out.println("summary of the players chosen Players1:"+ perso1 + "Players2:" +perso2 );
-        
+        System.out.println("The Game starts...");
+         fight(perso1,perso2);
     }
-    
+    public static ArrayList<defaultPlayer> saveDefaultPerso(int i, defaultPlayer persoToSave ) {
+        ArrayList<defaultPlayer> stock = new ArrayList<defaultPlayer>();
+        stock.add(i,persoToSave);
+        return stock;   
+    }
+    public static int addMore(int i){
+        i +=1;
+        return i;
+    }
+    public static ArrayList<defaultPlayer> displayStockSave( ArrayList<defaultPlayer> showMe ) {
+        for (int i = 0; i < showMe.size(); i++) {
+            System.out.println(i+":"+showMe.get(i));
+        }
+        return showMe;   
+    }
+
     public static String setPlayerToGame() {
         int man = 78 ;
-        String type= "vide" ;
+       String type="" ;
+    
         try {
         Scanner choosePerso = new Scanner(System.in);
         System.out.println("Choose your perso");
@@ -29,29 +49,30 @@ public class create extends Archetype{
         System.out.println("Press 3 for Wizard ");
         System.out.println("Press 4 for Thief");
         man = choosePerso.nextInt();
+        
         } catch (Exception e) {
             System.err.println("Error TRY AGAIN");
             setPlayerToGame();
         }
-        
+       
         switch (man) {
     case 1 :
         defaultPlayer player = new defaultPlayer(def, name, damage, pv, initiative);
         System.out.println(player);
-        type = "Default";
-            
-        
+        saveMe=saveDefaultPerso(indexSave,player);
+        indexSave=addMore(indexSave);
+        type =player.gen;
         break;
     case 2 :
-        Warrior war = new Warrior("Mathias", 8 , 15 ,99 );
+        Warrior war = new Warrior(Warrior.name, Warrior.damage , Warrior.pv,Warrior.initiative );
         System.out.println(war);
-        type = "Warrior";
+       type =war.gen;
         
         break;
     case 3 :
-        Wizard wiz = new Wizard("Gabriel", 9 , 15 ,74 );
+        Wizard wiz = new Wizard(Wizard.name,Wizard.damage,Wizard.pv,Wizard.initiative);
         System.out.println(wiz);
-        type = "Wizard";
+        type =wiz.gen;
         break;
     case 4 :
         
@@ -61,18 +82,132 @@ public class create extends Archetype{
             System.err.println("Try again");
             setPlayerToGame();
         break;
-}
+     }     
         return type;
+        
     }
-    public void store(){
+   
+    public static void  fight(String player1, String player2){
+       String namePlayer1 =selectName(player1);
+       String namePlayer2 =selectName(player2);
+       int Damage1 =selectDamage(player1);
+       int Damage2 =selectDamage(player2);
+       int playerPv1 = selectPv(player1);
+       int playerPv2 =selectPv(player2);
+       int playerInit1 =selectInitiative(player1);
+       int playerInit2 =selectInitiative(player2);
+       int it=0;
+       
+       if (playerInit1>playerInit2) {  
+            System.out.println(namePlayer1+" You start !");
+       } else {
 
-        ArrayList<Archetype> character = new ArrayList<Archetype>();
+           System.out.println(namePlayer2+" You start !");
+       }
+       
+       do {   
+            it=compteur(it);  
+            System.out.println("Turn number: "+ it);
+            System.out.println(namePlayer1+" is attacking. ");
+            playerPv1= takeDamage(Damage1,playerPv1);
+            System.out.println("Your pv:"+playerPv1);
 
-        Warrior war = new Warrior(this.name, this.damage, this.pv, this.initiative);
-        character.add(war);  
-
-        Wizard wiz = new Wizard(this.name, this.damage, this.pv, this.initiative);
-        character.add(wiz);
+            it=compteur(it);  
+            System.out.println("Turn number: "+ it);
+           
+           System.out.println(namePlayer2+" is attacking. ");
+           playerPv2= takeDamage(Damage2,playerPv2);
+           System.out.println("Your pv: "+playerPv2);
+       } while ((playerPv1 == 0) ||( playerPv2 == 0));
+      
+       System.out.println(namePlayer1+ " Your Pv : "+playerPv1+".");
+       System.out.println(namePlayer2+ " Your Pv : "+playerPv2+".");
+       if ((playerPv1==0 )&& (playerPv2 !=0)) {
+           System.out.println(namePlayer2+" Congrat You win!!! "+"rest of pv"+playerPv2);
+       } else if((playerPv2==0 )&& (playerPv1 !=0)) {
+           System.out.println(namePlayer1+" Congrat You win!!! "+"rest of pv"+playerPv1);
+       }else {
+           System.out.println("equality in the game nobody wins this game");
+       }
+       
+       
+       
     }
+    public static void toFinish() {
+        String last =" ";
+        try {
+           Scanner rt =new Scanner(System.in);
+           System.out.println("Restart or quit? ");
+           System.out.println("Press R to Restart ");
+           System.out.println("Press Q to Quit ");
+            last= rt.nextLine();
+           
+       } catch (Exception e) {
+           System.err.println("Error TRY AGAIN");
+       }
+       switch (last) {
+           case "R ":
+               display();
+               break;
+           case "Q ":
+                    create.wantQuit();
+               break;    
+       
+           default:
+               break;
+       }
     
+        
+        
+    }
+    private static void wantQuit() {
+    }
+    public static int compteur(int nb) {
+        
+        return nb+=1;
+    }
+    public static int selectInitiative(String toSepare ) {
+        String regex =" ";
+       String mot[]=toSepare.split(regex);
+       for (int i = 0; i < 4; i++) {
+           
+       }
+   
+     int result = Integer.parseInt(mot[3]);
+       return result;
+    }
+    public static int selectPv(String toSepare) {
+       String regex =" ";
+       String mot[]=toSepare.split(regex);
+       for (int i = 0; i < 4; i++) {
+            
+       }
+   
+     int result = Integer.parseInt(mot[2]);
+       return result; 
+    }
+
+    public static int selectDamage(String toSepare) {
+        String regex =" ";
+       String mot[]=toSepare.split(regex);
+       for (int i = 0; i < 4; i++) {
+            
+       }
+   
+     int result = Integer.parseInt(mot[1]);
+       
+     return result;
+    }
+    public static String selectName(String toSepare) {
+        String regex =" ";
+       String mot[]=toSepare.split(regex);
+       for (int i = 0; i < 4; i++) {
+            
+       }
+       String result =mot[0];
+     
+       
+     return result;
+    }
 }
+    

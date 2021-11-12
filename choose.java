@@ -8,6 +8,7 @@ public class choose {
     System.out.println("Do you want to go back to the menu?(yes or press anywhere");
     String reponse = jk.nextLine();
     reponse = verifUpper(reponse);
+    
     switch (reponse) {
       case "yes":
         principalMain();
@@ -35,6 +36,7 @@ public class choose {
         System.out.println("If you really want to quit ?(write yes else write no)");
         theChoose2 =largo.nextLine();
         theChoose2 = verifUpper(theChoose2);
+        
         switch (theChoose2) {
         case "yes":
           System.out.println("Good Bye see you soon CHAMPIONS.");
@@ -51,6 +53,29 @@ public class choose {
           break;
       }
       }
+      public static void finalQuit() {
+        Scanner largo = new Scanner(System.in);
+         String theChoose2;
+        System.out.println("If you really want to quit ?(write yes else write no)");
+        theChoose2 =largo.nextLine();
+        theChoose2 = verifUpper(theChoose2);
+        
+        switch (theChoose2) {
+        case "yes":
+          System.out.println("Good Bye see you soon CHAMPIONS.");
+          System.exit(1);
+          break;
+        case "no":
+        System.out.println("You will be redirected.");
+              principalMain();
+          break;
+      
+        default:
+          System.out.println("Your select is wrong please try again.");
+            finalQuit();
+          break;
+      }
+      }
     //Methode to display
   public static void principalMain(){
     System.out.println("");
@@ -62,9 +87,8 @@ public class choose {
     System.out.println("Press 'r' for to display the rules.");
     System.out.println("");
     Scanner key = new Scanner(System.in);
-    System.out.println("Select your option:");
     String theChoose =key.nextLine();
-
+    System.out.println("Select your option:");
     theChoose = verifUpper(theChoose);
     
     switch (theChoose) {
