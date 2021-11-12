@@ -75,7 +75,8 @@ public class create extends Archetype{
         type =wiz.gen;
         break;
     case 4 :
-        
+        Thief th = new Thief(Thief.name, Thief.damage,Thief.pv, Thief.initiative);
+        type=th.gen;
         break;
 
     default:
