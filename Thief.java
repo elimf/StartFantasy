@@ -1,5 +1,5 @@
 public class Thief extends Archetype {
-    public Thief (String name, int damage, int pv, int initiative){
+    public Thief (String name, int damage, int pv, int initiative, boolean dodge, boolean shield, boolean damageAmplified, boolean damageCritikal){
         Archetype.name = nameThief;
         Archetype.damage = damageThief;
         Archetype.pv = pvThief;
@@ -14,7 +14,7 @@ public class Thief extends Archetype {
     int damageThief= addDamage();
     int pvThief = addPv();
     int initiativeThief = addIniatiative();
-    int dodgeThief= addDodge();
+    boolean dodgeThief= addDodge();
     boolean shieldThief = false;
     boolean damageAmplifiedThief=false;
     boolean damageCritikalThief= addDamageCritikal();

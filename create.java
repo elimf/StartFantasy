@@ -64,18 +64,18 @@ public class create extends Archetype{
         type =player.gen;
         break;
     case 2 :
-        Warrior war = new Warrior(Warrior.name, Warrior.damage , Warrior.pv,Warrior.initiative );
+        Warrior war = new Warrior(Warrior.name, Warrior.damage, Warrior.pv, Warrior.initiative, Warrior.dodge, Warrior.shield, Warrior.damageAmplified, Warrior.damageCritikal);
         System.out.println(war);
        type =war.gen;
         
         break;
     case 3 :
-        Wizard wiz = new Wizard(Wizard.name,Wizard.damage,Wizard.pv,Wizard.initiative);
+        Wizard wiz = new Wizard(Wizard.name,Wizard.damage, Wizard.pv, Wizard.initiative, Wizard.dodge, Wizard.shield, Wizard.damageAmplified, Wizard.damageCritikal);
         System.out.println(wiz);
         type =wiz.gen;
         break;
     case 4 :
-        Thief th = new Thief(Thief.name, Thief.damage,Thief.pv, Thief.initiative);
+        Thief th = new Thief(Thief.name, Thief.damage, Thief.pv, Thief.initiative, Thief.dodge, Thief.shield, Thief.damageAmplified, Thief.damageCritikal);
         type=th.gen;
         break;
 
@@ -97,8 +97,8 @@ public class create extends Archetype{
        int playerPv2 =selectPv(player2);
        int playerInit1 =selectInitiative(player1);
        int playerInit2 =selectInitiative(player2);
-       int Dodge1=selectDamage(player1);
-       int Dodge2 =selectDamage(player2);
+       boolean Dodge1=selectDodge(player1);
+       boolean Dodge2 =selectDodge(player2);
        boolean Shield1 =selectShield(player1);
        boolean Shield2= selectShield(player2);
        boolean DA1 =selectDamageAmplified(player1);
@@ -121,20 +121,20 @@ public class create extends Archetype{
             System.out.println(" ");
 
             System.out.println(namePlayer1+" is attacking. ");
-            playerPv2= takeDamage(Damage1,playerPv2, Shield2);
+            playerPv2= takeDamage(Damage1,playerPv2, Shield2,Dodge2,Dc1,DA1);
             System.out.println(namePlayer2+" your pv:"+playerPv2+"after the phenomenal attack. ");
             System.out.println(" ");
-           } while (playerPv2 == 0);
+           } while (playerPv2 == 0 || playerPv2 >0);
            do {
                it=compteur(it);  
                System.out.println("Round: "+ it);
                System.out.println(" ");
            
                System.out.println(namePlayer2+" is attacking. ");
-               playerPv1= takeDamage(Damage2,playerPv1,Shield1);
+               playerPv1= takeDamage(Damage2,playerPv1,Shield1,Dodge1,Dc2,DA2);
                System.out.println("Your pv: "+playerPv1+"after the phenomenal attack. ");
                
-           } while (playerPv1 == 0);    
+           } while (playerPv1 == 0|| playerPv1 >0);    
        } while ((playerPv1 == 0) ||( playerPv2 == 0));
       
        System.out.println(namePlayer1+ " Your Pv : "+playerPv1+".");
@@ -185,14 +185,14 @@ public class create extends Archetype{
      boolean result = Boolean.parseBoolean(mot[5]);
        return result;
     }
-    public static int selectDodge(String toSepare ) {
+    public static boolean selectDodge(String toSepare ) {
         String regex =" ";
        String mot[]=toSepare.split(regex);
        for (int i = 0; i < 7; i++) {
            
        }
    
-     int result = Integer.parseInt(mot[4]);
+     boolean result = Boolean.parseBoolean(mot[4]);
        return result;
     }
     public static int selectInitiative(String toSepare ) {

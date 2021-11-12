@@ -1,5 +1,5 @@
 public class Wizard extends Archetype{
-    public Wizard (String name, int damage, int pv, int initiative){
+    public Wizard (String name, int damage, int pv, int initiative, boolean dodge, boolean shield, boolean damageAmplified,boolean damageCritikal){
         Archetype.name = nameWizard;
         Archetype.damage = damageWizard;
         Archetype.pv = pvWizard;
@@ -14,13 +14,13 @@ public class Wizard extends Archetype{
     int damageWizard = addDamage();
     int pvWizard = addPv();
     int initiativeWizard = addIniatiative();
-    int dodgeWizard =0;
+    boolean dodgeWizard =false;
     boolean shieldWizard = false;
     boolean damageAmplifiedWizard= addDamageAmplified();
     boolean damageCritikalWizard =false;
     String gen ;
     public String toString() {
-        return "  name : "+ nameWizard + " | Damage : " + damageWizard+ " /100 |  pv : " + pvWizard+ " /500 | initiative : " +" /10 | Dodge : "+ dodgeWizard+"/150 "+" |Shield : "+shieldWizard+" | damage Amplified :  "+damageAmplifiedWizard +" | Damage Critikal : "+ damageCritikalWizard; 
+        return "  name : "+ nameWizard + " | Damage : " + damageWizard+ " /100 |  pv : " + pvWizard+ " /500 | initiative : " +" /10 | Dodge : "+ dodgeWizard+ " |Shield : "+shieldWizard+" | damage Amplified :  "+damageAmplifiedWizard +" | Damage Critikal : "+ damageCritikalWizard; 
     }
     
 }

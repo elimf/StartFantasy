@@ -21,7 +21,7 @@ public class defaultPlayer extends Archetype {
     int damageDefault = addDamage();
     int pvDefault = addPv();
     int initDefault = addIniatiative();
-    int dodgeDefault=addDodge();
+    boolean dodgeDefault=addDodge();
     boolean shieldDefault = addShield();
     boolean damageAmplifiedDefault =addDamageAmplified();
     boolean damageCritikalDefault =addDamageCritikal();

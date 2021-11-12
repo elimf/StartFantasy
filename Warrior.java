@@ -1,5 +1,5 @@
 public class Warrior extends Archetype{
-        public Warrior (String name, int damage, int pv, int initiative){
+        public Warrior (String name, int damage, int pv, int initiative, boolean dodge, boolean shield, boolean damageAmplified, boolean damageCritikal ){
         Archetype.name = nameWarrior;
         Archetype.damage = damageWarrior;
         Archetype.pv = pvWarrior;
@@ -14,7 +14,7 @@ public class Warrior extends Archetype{
     int damageWarrior = addDamage();
     int pvWarrior = addPv();
     int initiativeWarrior = addIniatiative();
-    int dodgeWarrior =0;
+    boolean dodgeWarrior = false;
     boolean shieldWarrior= addShield();
     boolean damageAmplifiedWarrior= false;
     boolean damageCritikalWarrior =false;
