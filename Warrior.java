@@ -4,16 +4,18 @@ public class Warrior extends Archetype{
         Archetype.damage = damageWarrior;
         Archetype.pv = pvWarrior;
         Archetype.initiative = initiativeWarrior;
-        gen =nameWarrior+" "+ damageWarrior+" "+pvWarrior+" "+initiativeWarrior;
+        Archetype.shield =shieldWarrior;
+        gen =nameWarrior+" "+ damageWarrior+" "+pvWarrior+" "+initiativeWarrior+ " "+ shieldWarrior;
     }
     String nameWarrior = "Warrior";
-    int damageWarrior = 100;
-    int pvWarrior = 400;
-    int initiativeWarrior = 6;
+    int damageWarrior = addDamage();
+    int pvWarrior = addPv();
+    int initiativeWarrior = addIniatiative();
+    int shieldWarrior= addShield();
     String gen;
     
 
     public String toString() {
-        return " name : "+ nameWarrior + " | Damage : " + damageWarrior+ " /100 |  pv : " + pvWarrior+ " /500 | initiative : " + initiativeWarrior + "/10.";
+        return " name : "+ nameWarrior + " | Damage : " + damageWarrior+ " /300 |  pv : " + pvWarrior+ " /1000 | initiative : " + initiativeWarrior + " /10 | Shield "+ shieldWarrior +" /500 "; 
     }
 }
