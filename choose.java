@@ -53,30 +53,8 @@ public class choose {
           break;
       }
       }
-      public static void finalQuit() {
-        Scanner largo = new Scanner(System.in);
-         String theChoose2;
-        System.out.println("If you really want to quit ?(write yes else write no)");
-        theChoose2 =largo.nextLine();
-        theChoose2 = verifUpper(theChoose2);
-        
-        switch (theChoose2) {
-        case "yes":
-          System.out.println("Good Bye see you soon CHAMPIONS.");
-          System.exit(1);
-          break;
-        case "no":
-        System.out.println("You will be redirected.");
-              principalMain();
-          break;
-      
-        default:
-          System.out.println("Your select is wrong please try again.");
-            finalQuit();
-          break;
-      }
-      }
-    //Methode to display
+     
+    //Methode to display the menu
   public static void principalMain(){
     System.out.println("");
     System.out.println("Welcome to Start Fantasy");
@@ -95,8 +73,9 @@ public class choose {
       case "p":
       System.out.println("The game will start in a few time");
       System.out.println("LOADING...");
-      game.setGames();
-        
+      System.out.println("The game will start now!!!!");
+       create.display();
+       toFinish();
         break;
       case "q":
             wantQuit();
@@ -112,4 +91,24 @@ public class choose {
         break;
     }
   }
+   public static void toFinish() {
+           Scanner rt =new Scanner(System.in);
+           System.out.println("Restart or quit?Press R or Q ");
+           String last= rt.nextLine();
+            last = verifUpper(last);
+       switch (last) {
+           case "r":
+               create.display();
+               break;
+           case "q":
+                   wantQuit();
+               break;    
+       
+           default:
+           System.out.println("Error TRY AGAIN");
+           toFinish();
+               break;
+       }
+       
+    }
 }

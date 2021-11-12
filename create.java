@@ -6,7 +6,7 @@ public class create extends Archetype{
      static ArrayList<defaultPlayer> saveMe = new ArrayList<defaultPlayer>();
      static int indexSave = 0;
     private static String def;
-    private static String playerDefault;
+    
 
     public static void display() {
         String perso1;
@@ -104,27 +104,35 @@ public class create extends Archetype{
 
            System.out.println(namePlayer2+" You start !");
        }
-       
+       System.out.println(" ");
        do {   
+           do {
             it=compteur(it);  
-            System.out.println("Turn number: "+ it);
-            System.out.println(namePlayer1+" is attacking. ");
-            playerPv1= takeDamage(Damage1,playerPv1);
-            System.out.println("Your pv:"+playerPv1);
+            System.out.println("Round: "+ it);
+            System.out.println(" ");
 
-            it=compteur(it);  
-            System.out.println("Turn number: "+ it);
+            System.out.println(namePlayer1+" is attacking. ");
+            playerPv2= takeDamage(Damage1,playerPv2);
+            System.out.println(namePlayer2+" your pv:"+playerPv2+"after the phenomenal attack. ");
+            System.out.println(" ");
+           } while (playerPv2 == 0);
+           do {
+               it=compteur(it);  
+               System.out.println("Round: "+ it);
+               System.out.println(" ");
            
-           System.out.println(namePlayer2+" is attacking. ");
-           playerPv2= takeDamage(Damage2,playerPv2);
-           System.out.println("Your pv: "+playerPv2);
+               System.out.println(namePlayer2+" is attacking. ");
+               playerPv1= takeDamage(Damage2,playerPv1);
+               System.out.println("Your pv: "+playerPv1+"after the phenomenal attack. ");
+               
+           } while (playerPv1 == 0);    
        } while ((playerPv1 == 0) ||( playerPv2 == 0));
       
        System.out.println(namePlayer1+ " Your Pv : "+playerPv1+".");
        System.out.println(namePlayer2+ " Your Pv : "+playerPv2+".");
        if ((playerPv1==0 )&& (playerPv2 !=0)) {
            System.out.println(namePlayer2+" Congrat You win!!! "+"rest of pv"+playerPv2);
-       } else if((playerPv2==0 )&& (playerPv1 !=0)) {
+       } else if((playerPv2 == 0 ) && (playerPv1 !=0)) {
            System.out.println(namePlayer1+" Congrat You win!!! "+"rest of pv"+playerPv1);
        }else {
            System.out.println("equality in the game nobody wins this game");
@@ -133,35 +141,7 @@ public class create extends Archetype{
        
        
     }
-    public static void toFinish() {
-        String last =" ";
-        try {
-           Scanner rt =new Scanner(System.in);
-           System.out.println("Restart or quit? ");
-           System.out.println("Press R to Restart ");
-           System.out.println("Press Q to Quit ");
-            last= rt.nextLine();
-           
-       } catch (Exception e) {
-           System.err.println("Error TRY AGAIN");
-       }
-       switch (last) {
-           case "R ":
-               display();
-               break;
-           case "Q ":
-                    create.wantQuit();
-               break;    
-       
-           default:
-               break;
-       }
-    
-        
-        
-    }
-    private static void wantQuit() {
-    }
+     
     public static int compteur(int nb) {
         
         return nb+=1;
