@@ -6,7 +6,8 @@ public class Archetype {
     protected static int initiative;
     protected static  int dodge;
     protected static int shield;
-    protected static int damageCritikal;
+    protected static boolean damageCritikal;
+    protected static boolean damageAmplified;
 
     static int takeDamage(int damage_receive,int pv){
          pv -= damage_receive;
@@ -48,6 +49,18 @@ public class Archetype {
     }
     public void setShield(int shield){
         Archetype.shield=shield;
+    }
+    public boolean getDamageCritikal(){
+        return damageCritikal;
+    }
+    public void setDamageCritikal(boolean damageCritikal){
+        Archetype.damageCritikal=damageCritikal;
+    }
+    public boolean getDamageAmplified(){
+        return damageAmplified;
+    }
+    public void setDamageAmplified(){
+        Archetype.damageAmplified= damageAmplified;
     }
      public  String addName() {
         String Default;
@@ -156,7 +169,7 @@ public class Archetype {
                             }
                             return numbers;
                         }
-public int addShield(){
+    public int addShield(){
     int numbers;
     try {
         Scanner cq = new Scanner(System.in);
@@ -180,5 +193,52 @@ public int addShield(){
                             }
                             return numbers;
                         }
-   
+    public  boolean addDamageCritikal() {
+        boolean DamageCri;
+        try {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Do you have a Damage Critikal? Write true or false :");
+         DamageCri = sc.nextBoolean();
+        } catch (Exception e) {
+            System.err.println("error input");
+            System.err.println("Entry true or false");
+            DamageCri=addDamageCritikal();
+        }
+        while(DamageCri== true || DamageCri == false){
+            try {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Do you have a Damage Critikal? Write true or false :");
+         DamageCri = sc.nextBoolean();
+        } catch (Exception e) {
+            System.err.println("error input");
+            System.err.println("Entry true or false");
+            DamageCri=addDamageCritikal();
+        }
+    }
+    return DamageCri; 
+}
+    public boolean addDamageAmplified(){
+            boolean DamageCri;
+        try {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Do you have a Damage Amplified? Write true or false :");
+         DamageCri = sc.nextBoolean();
+        } catch (Exception e) {
+            System.err.println("error input");
+            System.err.println("Entry true or false");
+            DamageCri=addDamageAmplified();
+        }
+        while(DamageCri== true || DamageCri == false){
+            try {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Do you have a Damage Amplified? Write true or false :");
+         DamageCri = sc.nextBoolean();
+        } catch (Exception e) {
+            System.err.println("error input");
+            System.err.println("Entry true or false");
+            DamageCri=addDamageAmplified();
+    }
+    return DamageCri; 
+}
+} 
 }
